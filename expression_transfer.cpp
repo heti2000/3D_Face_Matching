@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
     cv::Mat imagePixelRef = image2.clone();
     Eigen::Matrix<double, -1, 1> pixelColors = Eigen::Matrix<double, -1, 1>::Zero(BFM_N_VERTICES * 3);
     grabPixels(bfm_m.get(), params2, imagePixelRef, pixelColors);
-    renderParamsToMat(bfm_m.get(), params2, emptyMat, pixelColors);
+    renderParamsToMat(bfm_m.get(), params2, emptyMat, pixelColors, false);
     cv::imshow("Pixel reference", emptyMat);
     cv::imwrite(outputPathPixelRef, emptyMat);
     cv::waitKey(1);
@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
 
     cv::Mat emptyMat2 = cv::Mat::zeros(image2.rows, image2.cols, CV_8UC3);
     cv::Mat imagePixelTrans = image2.clone();
-    renderParamsToMat(bfm_m.get(), params2, imagePixelTrans, pixelColors);
+    renderParamsToMat(bfm_m.get(), params2, imagePixelTrans, pixelColors, false);
     cv::imshow("Pixel transferred", imagePixelTrans);
     cv::imwrite(outputPathPixelTrans, imagePixelTrans);
     cv::waitKey(0);

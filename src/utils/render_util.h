@@ -66,7 +66,7 @@ static void calcVertexNormals(BFM_Manager* bfm_m, Eigen::Matrix<T, -1, 1>& verte
     }
 }
 
-static void renderParamsToMat(MeshRenderer& meshRenderer, BFM_Manager* bfm_m, OptParams& params, cv::Mat& img, Eigen::Matrix<double, -1, 1>& vertexColor) {
+static void renderParamsToMat(MeshRenderer& meshRenderer, BFM_Manager* bfm_m, OptParams& params, cv::Mat& img, Eigen::Matrix<double, -1, 1>& vertexColor, bool renderLighting) {
     Eigen::Matrix<double, -1, 1> vertexPosition = bfm_m->Get_ShapeMu() + bfm_m->Get_ExprMu();
     Eigen::Matrix<double, -1, 1> renderPosition = Eigen::Matrix<double, -1, 1>::Zero(vertexPosition.size());
 
@@ -218,9 +218,9 @@ static void renderParamsToMat(BFM_Manager* bfm_m, OptParams& params, cv::Mat& im
     renderParamsToMat(meshRenderer, bfm_m, params, img);
 }
 
-static void renderParamsToMat(BFM_Manager* bfm_m, OptParams& params, cv::Mat& img, Eigen::Matrix<double, -1, 1>& vertexColor) {
+static void renderParamsToMat(BFM_Manager* bfm_m, OptParams& params, cv::Mat& img, Eigen::Matrix<double, -1, 1>& vertexColor, bool renderLighting) {
     MeshRenderer meshRenderer(img.cols, img.rows);
-    renderParamsToMat(meshRenderer, bfm_m, params, img, vertexColor);
+    renderParamsToMat(meshRenderer, bfm_m, params, img, vertexColor, renderLighting);
 }
 
 template <typename T>
