@@ -12,6 +12,7 @@ The following libraries need to be installed:
 - glog
 - GLEW
 - GLFW
+- GCC >=13.0
 
 #### Linux
 ```
@@ -51,7 +52,7 @@ There is some restrinction of file on each folder in order to be able run correc
 The Basel model you can find it on this [web](https://faces.dmi.unibas.ch/bfm/bfm2017.html). Save with the name that we showed above.
 
 #### PIPNet model
-Download `pipnet_resnet101_10x68x32x256_300w.pth` and put it in  the correct directory.
+Download `pipnet_resnet101_10x68x32x256_300w.pth` and put it in  the correct directory [web](https://github.com/jhb86253817/PIPNet).
 
 #### Source Images
 To be able to run everything, the landmarks need to be extracted using python and PIPNet.
