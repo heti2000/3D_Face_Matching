@@ -59,7 +59,7 @@ To be able to run everything, the landmarks need to be extracted using python an
 
 For single images, copy your jpg file into the datasets folder and run the following command from the project directory:
 ````
-python3 ./tools/landmark_detector.py ../datasets ../datasets/ImageName.jpg
+python3 ./tools/landmark_detector.py ./datasets ./datasets/ImageName.jpg
 ````
 This will create the files `input_ImageName.anl` and `output_ImageName.jpg`. Confirm with the `output_ImageName.jpg` file that your keypoints were successfully identified.
 
