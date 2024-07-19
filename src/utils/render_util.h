@@ -70,16 +70,18 @@ static void renderParamsToMat(MeshRenderer& meshRenderer, BFM_Manager* bfm_m, Op
     Eigen::Matrix<double, -1, 1> vertexPosition = bfm_m->Get_ShapeMu() + bfm_m->Get_ExprMu();
     Eigen::Matrix<double, -1, 1> renderPosition = Eigen::Matrix<double, -1, 1>::Zero(vertexPosition.size());
 
-    Eigen::Matrix<double, -1, 1> vertexNormals = Eigen::Matrix<double, -1, 1>::Zero(vertexPosition.size());
-    calcVertexNormals(bfm_m, vertexPosition, vertexNormals);
+    if (renderLighting) {
+        Eigen::Matrix<double, -1, 1> vertexNormals = Eigen::Matrix<double, -1, 1>::Zero(vertexPosition.size());
+        calcVertexNormals(bfm_m, vertexPosition, vertexNormals);
 
-    for (int i=0; i < BFM_N_VERTICES; i++) {
-        Eigen::Matrix<double,3,1> col;
-        Eigen::Matrix<double,3,1> normal = vertexNormals.block<3,1>(3*i,0);
-        calculatePixelLighting(params.sh_weights, normal, col);
-        vertexColor[3*i] *= col[0];
-        vertexColor[3*i+1] *= col[1];
-        vertexColor[3*i+2] *= col[2];
+        for (int i=0; i < BFM_N_VERTICES; i++) {
+            Eigen::Matrix<double,3,1> col;
+            Eigen::Matrix<double,3,1> normal = vertexNormals.block<3,1>(3*i,0);
+            calculatePixelLighting(params.sh_weights, normal, col);
+            vertexColor[3*i] *= col[0];
+            vertexColor[3*i+1] *= col[1];
+            vertexColor[3*i+2] *= col[2];
+        }
     }
 
     const Eigen::VectorXd& vecShapeEv = bfm_m->Get_ShapeEv();
