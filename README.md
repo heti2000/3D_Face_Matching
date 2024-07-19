@@ -77,6 +77,6 @@ mkdir datasets/clipName
 We provide 3 experiments:
 - `main`: Normal face matching for a single image
 - `video_analyze`: Face matching for a video sequence (dense for the first image, sparse for the others)
-- `expression_transfer`: Expression transfer
+- `expression_transfer`: Expression transfer - make sure that the output folder actually exists before running the executabe
 
 Those executables all provide a usage info and an example command, when calling them without arguments.
