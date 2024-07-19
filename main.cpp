@@ -44,8 +44,8 @@ int main(int argc, char* argv[]) {
     // save the result
     // For sparse optimization:
     // Eigen::VectorXd vertexColors = Eigen::VectorXd::Ones(3*BFM_N_VERTICES);
-    // renderParamsToMat(bfm_m.get(), params, image, vertexColors);
-    renderParamsToMat(bfm_m.get(), params, image, false);
+    // renderParamsToMat(bfm_m.get(), params, image, vertexColors, true);
+    renderParamsToMat(bfm_m.get(), params, image);
     cv::imwrite(outputPath, image);
     cv::imshow("Result", image);
     cv::waitKey(0);
