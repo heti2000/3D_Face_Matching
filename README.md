@@ -1,5 +1,6 @@
 # 3d_Scanning
 3D Scanning &amp; Motion Capture project repository
+Link to the repo: https://github.com/heti2000/3D_Face_Matching
 
 ## Installation dependencies
 
