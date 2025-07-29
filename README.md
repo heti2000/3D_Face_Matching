@@ -1,6 +1,38 @@
 # 3d_Scanning
-3D Scanning &amp; Motion Capture project repository
-Link to the repo: https://github.com/heti2000/3D_Face_Matching
+This project is an implementation similar to the [Face2Face](https://arxiv.org/abs/2007.14808) method.
+
+Our approach uses a model based on the [Basel FaceModel](https://faces.dmi.unibas.ch/bfm/bfm2017.html). This model consists of a parameterized generative 3D shape, expression, and albedo.
+Since this model does not include lighting parameters, we employed a Lambertian lighting model to simulate the environment lighting to obtain a better and more realistic re-rendering.
+
+### Face tracking and reconstruction
+We estimate the statistical parameters for the face model, head pose, and scene
+illumination from input data. We determine the model and
+lighting parameters by minimizing a nonlinear least squares
+energy, measuring the discrepancy between the RGB input,
+and then re-render the face model using the estimated face
+shape, pose, and albedo. The problem is solved in two
+stages. First, using a set of determined facial landmarks from PIPNet,
+we estimate the shape, albedo, expression, and face pose.
+Second, we combine the parameters estimated in the previous
+step with texture color and Lambertian lighting parameters
+to jointly estimate and refine the face model quality, making
+it more precise.
+
+| Stage | Example |
+|---|---|
+| 1st stage: Sparse Matching | ![Sparse Matching Example](imgs/sparse-matching.png) |
+| 2nd stage: Dense Matching | ![Dense Matching Example](imgs/dense-matching.png) |
+
+
+### Reenactment
+Once we have estimated the parameters
+and head pose, we can re-render the face onto the underlying input image. During this process, the expression param-
+eters are extracted and mapped to the source target. While
+the identity of the target face model is preserved, we can
+composite the synthesized image on top of the target image.
+This allows us to do expression transfer.
+
+![Expression Transfer Example](imgs/expression-transfer.png)
 
 ## Installation dependencies
 
