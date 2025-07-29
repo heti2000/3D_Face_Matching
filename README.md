@@ -1,5 +1,5 @@
 # 3d_Scanning
-This project is an implementation similar to the [Face2Face](https://arxiv.org/abs/2007.14808) method.
+This project is an implementation similar to the [Face2Face](https://arxiv.org/abs/2007.14808) method for face matching/tracking and expression transfer.
 
 Our approach uses a model based on the [Basel FaceModel](https://faces.dmi.unibas.ch/bfm/bfm2017.html). This model consists of a parameterized generative 3D shape, expression, and albedo.
 Since this model does not include lighting parameters, we employed a Lambertian lighting model to simulate the environment lighting to obtain a better and more realistic re-rendering.
